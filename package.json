@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.15"
+  },
+  "scripts": {
+    "build-ToDoList" : "tailwindcss -i ./srcFiles/input.css -o ./ToDoList/output.css --watch"
+  }
+}
