@@ -44,6 +44,17 @@ function addTasksIntoPage (tasksArray) {
     tasks.innerHTML="";
 
     tasksArray.forEach(task => {
+        let div=document.createElement("div");
+        div.className="task";
+
+        if(task.completed) div.classList.add("done");
+
+        div.setAttribute("data-id",task.id);
+        div.innerHTML=`
+                <div class="content">${task.content}</div>
+                <span class="delete">delete</span>`;
+
+        tasks.append(div);
         
     });
 

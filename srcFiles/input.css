@@ -9,11 +9,11 @@ body {
 }
 
 .container {
-    @apply w-[85%] mx-auto mt-[50px];
+    @apply w-[95%] mx-auto mt-[50px];
 }
 
 .container .form {
-    @apply bg-thColor p-[20px] flex gap-[15px];
+    @apply bg-thColor p-[15px] flex gap-[15px];
 }
 
 .container .form .input {
@@ -25,17 +25,27 @@ body {
 }
 
 .tasks {
-    @apply p-[20px] mt-[30px] duration-200 bg-thColor opacity-0;
+    @apply p-[15px] mt-[25px] duration-200 bg-thColor opacity-0;
 }
 
 .tasks .task {
-    @apply px-[10px] py-[5px] text-2xl font-semibold capitalize border border-[baseColor] rounded-[5px] ;
+    @apply px-[5px] relative py-[10px] text-[19px] font-semibold capitalize border-2 border-[baseColor] rounded-[5px] ;
+    @apply flex justify-between w-full items-center;
+    
 }
 
 .tasks .task:not(:last-child) {
-    @apply mb-[20px];
+    @apply mb-[15px];
 }
 
 .tasks .task.done {
     @apply pointer-events-none opacity-[.2];
+}
+
+.tasks .task .delete {
+    @apply bg-baseColor text-[white]  rounded-[3px] text-[13px] cursor-pointer  ml-[10px] px-[8px] py-[2px];
+}
+
+.tasks .content {
+    @apply overflow-auto
 }
