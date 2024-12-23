@@ -4,15 +4,21 @@ let submit=document.querySelector(".add");
 let input=document.querySelector(".input");
 
 let tasksArray=[];
-
-
 getDataOnReload();
-submit.addEventListener("click",handleAdding);
 
+submit.addEventListener("click",handleAdding);
 tasks.addEventListener("click",(eve)=> {
+    // remove element
     if(eve.target.classList.contains("delete")) {
         eve.target.parentElement.remove();
         if(tasks.innerHTML==="") tasks.style.opacity="0";
+        deleteFromlocalStorage(eve.target.parentElement.dataset.id);
+    }
+
+    // updata element status
+    if(eve.target.classList.contains("content")) {
+        makeTaskDone(eve.target.parentElement.dataset.id);
+        eve.target.parentElement.classList.toggle("done");
     }
 })
 
@@ -70,7 +76,7 @@ function addTasksTolocalStorage (tasksArray) {
 
 function getDataOnReload () {
     let data=localStorage.getItem("tasks");
-    if(data) {
+    if(data && data!=="[]") {
         tasksArray=JSON.parse(data);
         tasks.style.opacity="1";
         addTasksIntoPage(tasksArray);
@@ -78,4 +84,21 @@ function getDataOnReload () {
     else {
         tasks.style.opacity="0";
     }
+}
+
+// ------------ Delete Tasks from local storage ----------------//
+
+function deleteFromlocalStorage (TaskId) {
+    tasksArray=tasksArray.filter( task => task.id!=TaskId);
+    addTasksTolocalStorage(tasksArray);
+}
+
+// ------------ make task done ----------------//
+function makeTaskDone (tskId) {
+    for(let i=0;i<tasksArray.length;i++) {
+        if(tasksArray[i].id== tskId) {
+            tasksArray[i].completed= !tasksArray[i].completed ;
+        }
+    }
+    addTasksTolocalStorage(tasksArray);
 }

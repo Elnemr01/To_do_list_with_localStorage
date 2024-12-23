@@ -17,7 +17,7 @@ body {
 }
 
 .container .form .input {
-    @apply flex-1 rounded-[7px] focus:outline-none px-[15px] py-[10px] border-2 border-[transparent] text-[17px] font-semibold focus:border-2 focus:border-baseColor;
+    @apply flex-1 rounded-[7px] capitalize focus:outline-none px-[15px] py-[10px] border-2 border-[transparent] text-[17px] font-semibold focus:border-2 focus:border-baseColor;
 }
 
 .container .form .add {
@@ -39,7 +39,7 @@ body {
 }
 
 .tasks .task.done {
-    @apply pointer-events-none opacity-[.2];
+    @apply opacity-[.2];
 }
 
 .tasks .task .delete {
@@ -47,5 +47,5 @@ body {
 }
 
 .tasks .content {
-    @apply overflow-auto
+    @apply overflow-auto cursor-pointer flex-1;
 }
